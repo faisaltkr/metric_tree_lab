@@ -43,4 +43,8 @@ php artisan passport:client --personal
 ## To create the symbolic link for Files
 ```
 php artisan storage:link
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 8e5eb16499c73c75dfbf1c6f5209f590d580001b
