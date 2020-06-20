@@ -3,9 +3,12 @@
 
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\BaseController as BaseController;
+use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+
+class UserController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        //$users  = User::all();
+        //return $this->sendResponse($users, 'Users retrieved successfully.');
     }
 
     /**
@@ -44,9 +48,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return $this->sendResponse($user->profile, 'User Profile retrieved successfully.');
     }
 
     /**

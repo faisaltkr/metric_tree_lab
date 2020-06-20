@@ -14,6 +14,10 @@ class NoteController extends BaseController
 {
 
    
+    public function __construct()
+    {
+        $this->user  = Auth::user();
+    }
 
     /**
      * Display a listing of the resource.
@@ -22,7 +26,8 @@ class NoteController extends BaseController
      */
     public function index()
     {
-        $notes = Note::all();
+        
+        $notes = Note::where('user_id', Auth::id())->get();
         return $this->sendResponse(NoteResource::collection($notes), 'Notes retrieved successfully.');
     }
 
@@ -145,7 +150,7 @@ class NoteController extends BaseController
      */
     public function destroy(Note $note)
     {
-        if($note){
+        if($note->user_id == Auth::id()){
             $note->delete();
             return $this->sendResponse([], 'Note deleted successfully.');
         }
